@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+pymysql
+cryptography
+bcrypt
+python-jose[cryptography]
+pillow
+opencv-python
+pytesseract
+pandas
+openpyxl
+pymupdf
+img2table
