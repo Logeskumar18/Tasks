@@ -1,4 +1,54 @@
-import { useEffect, useState } from 'react'
-import API from '../../services/api.js'
-function Categories() { const [categories, setCategories] = useState([]); const [name, setName] = useState(''); const load = () => API.get('/admin/categories').then(({ data }) => setCategories(data.categories)); useEffect(() => { load() }, []); const submit = async (e) => { e.preventDefault(); await API.post('/admin/categories', { category_name: name }); setName(''); load() }; return <section><p className="text-secondary text-uppercase small fw-semibold mb-1">Catalogue</p><h1 className="mb-4">Categories</h1><form className="row g-2 mb-4" onSubmit={submit}><div className="col-sm-8"><input className="form-control bg-dark text-light border-secondary" placeholder="New category name" value={name} onChange={(e) => setName(e.target.value)} required /></div><div className="col-sm-4"><button className="btn btn-light w-100" type="submit">Add category</button></div></form><div className="list-group">{categories.map((category) => <div className="list-group-item list-group-item-dark border-secondary" key={category.id}>{category.category_name}</div>)}</div></section> }
-export default Categories
+import { useEffect, useState } from "react";
+import API from "../../services/api.js";
+function Categories() {
+  const [categories, setCategories] = useState([]);
+  const [name, setName] = useState("");
+  const load = () =>
+    API.get("/admin/categories").then(({ data }) =>
+      setCategories(data.categories),
+    );
+  useEffect(() => {
+    load();
+  }, []);
+  const submit = async (e) => {
+    e.preventDefault();
+    await API.post("/admin/categories", { category_name: name });
+    setName("");
+    load();
+  };
+  return (
+    <section>
+      <p className="text-secondary text-uppercase small fw-semibold mb-1">
+        Catalogue
+      </p>
+      <h1 className="mb-4">Categories</h1>
+      <form className="row g-2 mb-4" onSubmit={submit}>
+        <div className="col-sm-8">
+          <input
+            className="form-control bg-dark text-light border-secondary"
+            placeholder="New category name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="col-sm-4">
+          <button className="btn btn-light w-100" type="submit">
+            Add category
+          </button>
+        </div>
+      </form>
+      <div className="list-group">
+        {categories.map((category) => (
+          <div
+            className="list-group-item list-group-item-dark border-secondary"
+            key={category.id}
+          >
+            {category.category_name}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+export default Categories;

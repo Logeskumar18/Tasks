@@ -1,4 +1,4 @@
-import pool from './db.js'
+import pool from "./db.js";
 
 const ensureOrders = async () => {
   await pool.query(`
@@ -16,7 +16,7 @@ const ensureOrders = async () => {
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )
-  `)
-}
+  `);
+};
 
-export default ensureOrders
+export default ensureOrders;

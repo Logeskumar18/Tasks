@@ -3,7 +3,7 @@ function AdminNavbar({ user, onLogout }) {
     <nav className="navbar navbar-dark bg-dark border-bottom border-secondary px-3 px-lg-5 py-3 sticky-top">
       <div className="container-fluid">
         <div className="d-flex align-items-center gap-3">
-          <div className="rounded-3 bg-light text-dark d-flex align-items-center justify-content-center fw-bold fs-5 p-2">S</div>
+          
           <div>
             <p className="text-secondary fw-semibold text-uppercase small mb-1">
               <i className="bi bi-stars me-2"></i>

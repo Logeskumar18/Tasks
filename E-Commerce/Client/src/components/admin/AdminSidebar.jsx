@@ -15,12 +15,7 @@ function AdminSidebar() {
       className="col-12 col-lg-2 bg-dark border-end border-secondary p-3 sticky-lg-top"
       style={{ minHeight: 'calc(100vh - 78px)' }}
     >
-      <div className="d-flex align-items-center gap-2 fw-bold fs-5 mb-4">
      
-        <span>
-          IPlant <span className="badge bg-secondary align-middle">ADMIN</span>
-        </span>
-      </div>
 
       <p className="text-secondary text-uppercase small fw-semibold mb-2">Workspace</p>
       <nav className="nav nav-pills flex-lg-column gap-1" aria-label="Admin navigation">

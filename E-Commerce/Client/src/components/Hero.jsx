@@ -30,22 +30,7 @@ function Hero() {
             <label className="visually-hidden" htmlFor="home-product-search">
               Search products
             </label>
-            <div className="input-group input-group-lg">
-              <span className="input-group-text bg-black border-secondary text-secondary">
-                <i className="bi bi-search" aria-hidden="true" />
-              </span>
-              <input
-                id="home-product-search"
-                className="form-control bg-black border-secondary text-white"
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search phones, laptops, accessories..."
-              />
-              <button className="btn btn-light px-4" type="submit">
-                Search
-              </button>
-            </div>
+          
           </form>
 
           <div className="d-flex flex-wrap gap-3 align-items-center">
