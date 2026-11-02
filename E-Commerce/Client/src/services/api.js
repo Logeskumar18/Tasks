@@ -6,7 +6,7 @@ const API = axios.create({
 })
 
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('shopEaseToken')
+  const token = localStorage.getItem('IPlantToken')
   if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })

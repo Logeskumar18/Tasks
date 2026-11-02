@@ -37,7 +37,7 @@ function Footer() {
                   Products
                 </a>
               </li>
-              <li className="mb-2">
+              {/* <li className="mb-2">
                 <a href="/about" className="text-secondary text-decoration-none">
                   About Us
                 </a>
@@ -46,7 +46,7 @@ function Footer() {
                 <a href="/contact" className="text-secondary text-decoration-none">
                   Contact
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -78,7 +78,7 @@ function Footer() {
 
         <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-2">
           <small className="text-secondary">
-            © {new Date().getFullYear()} IPlant. All rights reserved.
+            © {new Date().getFullYear()} Logeskumar. All rights reserved.
           </small>
 
           <small className="text-secondary">

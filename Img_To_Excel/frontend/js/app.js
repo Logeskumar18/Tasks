@@ -15,6 +15,21 @@ function showMessage(message, type = "danger", target = "pageMessage") {
   }
 }
 
+function showPopup(message, type = "danger") {
+  const popup = document.getElementById("uploadPopup");
+  if (!popup) {
+    showMessage(message, type);
+    return;
+  }
+
+  popup.textContent = message;
+  popup.className = `upload-popup alert alert-${type} show`;
+  window.clearTimeout(showPopup.timeout);
+  showPopup.timeout = window.setTimeout(() => {
+    popup.classList.remove("show");
+  }, 4000);
+}
+
 function requireAuth() {
   if (!token()) {
     window.location.href = "login.html";
@@ -77,7 +92,7 @@ async function uploadDocument(event) {
   const form = event.target;
   const file = form.querySelector('input[type="file"]').files[0];
   if (!file) {
-    showMessage("Select an image or PDF first.");
+    showPopup("Select an image or PDF first.");
     return;
   }
 
@@ -97,11 +112,11 @@ async function uploadDocument(event) {
   }
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    showMessage(result.detail || "Upload failed.");
+    showPopup(result.detail || "Upload failed.");
     return;
   }
 
-  showMessage(
+  showPopup(
     `${result.filename} uploaded and ${result.tables_detected} table(s) extracted successfully.`,
     "success"
   );

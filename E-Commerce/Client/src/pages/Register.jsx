@@ -31,11 +31,11 @@ function Register() {
   return (
     <section className="container py-5"><div className="row justify-content-center"><div className="col-12 col-md-8 col-lg-5">
       <div className="card bg-dark border-secondary"><div className="card-body p-4 p-md-5">
-        <p className="text-secondary text-uppercase small fw-semibold">New account</p>
-        <h1 className="h2 fw-bold">Make room for what you love.</h1>
-        <p className="text-secondary">Create an account to keep your favorites close.</p>
+        <p className="text-white text-uppercase small fw-semibold">New account</p>
+        <h1 className="h2 fw-bold text-white">Make room for what you love.</h1>
+        <p className="text-white">Create an account to keep your favorites close.</p>
         {message.text && <div className={`alert alert-${message.type === 'error' ? 'danger' : 'success'}`} role="alert">{message.text}</div>}
-        <form onSubmit={handleSubmit} className="vstack gap-3">
+        <form onSubmit={handleSubmit} className="text-white vstack gap-3">
           <label className="form-label mb-0" htmlFor="register-name">Full name</label>
           <input className="form-control bg-black text-light border-secondary" id="register-name" name="name" type="text" value={formData.name} onChange={handleChange} autoComplete="name" required />
           <label className="form-label mb-0" htmlFor="register-email">Email address</label>
@@ -44,7 +44,7 @@ function Register() {
           <input className="form-control bg-black text-light border-secondary" id="register-password" name="password" type="password" value={formData.password} onChange={handleChange} autoComplete="new-password" minLength="8" required />
           <button className="btn btn-light" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Creating account...' : 'Create account'}</button>
         </form>
-        <p className="text-secondary mt-4 mb-0">Already have an account? <Link className="text-white" to="/login">Sign in</Link></p>
+        <p className="text-white mt-4 mb-0">Already have an account? <Link className="text-white" to="/login">Sign in</Link></p>
       </div></div></div></div></section>
   )
 }

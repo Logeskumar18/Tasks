@@ -118,3 +118,21 @@ body {
 .page-header {
   padding: 3rem 0 2rem;
 }
+
+.upload-popup {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 1080;
+  min-width: min(22rem, calc(100vw - 2.5rem));
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-1rem);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.upload-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}

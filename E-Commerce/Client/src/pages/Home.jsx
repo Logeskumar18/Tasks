@@ -94,7 +94,7 @@ function Home({ onAdd, isAuthenticated }) {
 
                     <div>
                         <p className="text-secondary text-uppercase small fw-semibold">
-                            ShopEase.
+                            IPlant.
                         </p>
 
                         <h2 className="display-6 fw-bold">

@@ -24,7 +24,7 @@ function ProductDetails({ onAdd, isAuthenticated }) {
     <section className="container py-5">
       <Link className="text-light d-inline-block mb-4" to="/products">← Back to collection</Link>
       <div className="row align-items-center g-5">
-        <div className="col-lg-6"><div className="ratio ratio-1x1 bg-dark rounded-4 overflow-hidden"><img src={product.image_url} alt={product.name} className="w-100 h-100 object-fit-cover" /></div></div>
+        <div className="col-lg-6"><div className="ratio ratio-1x1 bg-dark rounded-4 overflow-hidden"><img src={product.image_url || '/product-placeholder.svg'} alt={product.name} className="w-100 h-100 object-fit-cover" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = '/product-placeholder.svg' }} /></div></div>
         <div className="col-lg-6">
           <p className="text-secondary text-uppercase small fw-semibold">{product.category}</p>
           <h1 className="display-4 fw-bold">{product.name}</h1>

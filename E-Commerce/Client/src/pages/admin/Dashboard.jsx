@@ -49,7 +49,7 @@ function Dashboard() {
   ]
 
   return (
-    <section className="py-2">
+    <section className="text-white py-2">
 
       {/* Page Header */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
@@ -72,15 +72,15 @@ function Dashboard() {
       {/* Statistics Cards */}
       <div className="row g-4 mb-4">
         {cards.map((card) => (
-          <div className="col-12 col-sm-6 col-xl-3" key={card.label}>
-            <div className="card bg-dark border-secondary h-100">
-              <div className="card-body p-4">
-                <div className="d-flex justify-content-between align-items-center mb-3">
-                  <span className="text-secondary fw-medium">
+          <div className="text-white col-12 col-sm-6 col-xl-3" key={card.label}>
+            <div className="card text-white bg-dark border-secondary h-100">
+              <div className="card-body text-white p-4">
+                <div className="d-flex text-white justify-content-between align-items-center mb-3">
+                  <span className="text-secondary text-white fw-medium">
                     {card.label}
                   </span>
 
-                  <div className="text-light fs-4">
+                  <div className=" fs-4">
                     <i className={`bi ${card.icon}`}></i>
                   </div>
                 </div>
@@ -106,10 +106,10 @@ function Dashboard() {
             <div className="col-lg-8">
               <span className="badge bg-light text-dark rounded-pill mb-3 px-3 py-2">
                 <i className="bi bi-stars me-2"></i>
-                ShopEase Admin
+                IPlant Admin
               </span>
 
-              <h2 className="fw-bold mb-3">
+              <h2 className="fw-bold text-white mb-3">
                 One clear view of your store.
               </h2>
 

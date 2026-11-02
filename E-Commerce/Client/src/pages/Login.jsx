@@ -20,8 +20,8 @@ function Login({ onLogin }) {
 
     try {
       const response = await API.post('/auth/login', formData)
-      localStorage.setItem('shopEaseToken', response.data.token)
-      localStorage.setItem('shopEaseUser', JSON.stringify(response.data.user))
+      localStorage.setItem('IPlantToken', response.data.token)
+      localStorage.setItem('IPlantUser', JSON.stringify(response.data.user))
       onLogin(response.data.user)
       setMessage({ type: 'success', text: response.data.message })
       navigate(response.data.user.role === 'admin' ? '/admin' : location.state?.from || '/')
@@ -33,11 +33,11 @@ function Login({ onLogin }) {
   }
 
   return (
-    <section className="container py-5"><div className="row justify-content-center"><div className="col-12 col-md-8 col-lg-5">
-      <div className="card bg-dark border-secondary"><div className="card-body p-4 p-md-5">
-        <p className="text-secondary text-uppercase small fw-semibold">Welcome back</p>
+    <section className="text-white container py-5"><div className="row justify-content-center"><div className="col-12 col-md-8 col-lg-5">
+      <div className="card text-white bg-dark border-secondary"><div className="card-body p-4 p-md-5">
+        <p className="text-white text-uppercase small fw-semibold">Welcome back</p>
         <h1 className="h2 fw-bold">Pick up where you left off.</h1>
-        <p className="text-secondary">Sign in to revisit your saved finds.</p>
+        <p className="text-white">Sign in to revisit your saved finds.</p>
         {message.text && <div className={`alert alert-${message.type === 'error' ? 'danger' : 'success'}`} role="alert">{message.text}</div>}
         <form onSubmit={handleSubmit} className="vstack gap-3">
           <label className="form-label mb-0" htmlFor="login-email">Email address</label>
@@ -46,7 +46,7 @@ function Login({ onLogin }) {
           <input className="form-control bg-black text-light border-secondary" id="login-password" name="password" type="password" value={formData.password} onChange={handleChange} autoComplete="current-password" required />
           <button className="btn btn-light" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Signing in...' : 'Sign in'}</button>
         </form>
-        <p className="text-secondary mt-4 mb-0">New here? <Link className="text-white" to="/register">Create an account</Link></p>
+        <p className="text-white mt-4 mb-0">New here? <Link className="text-white" to="/register">Create an account</Link></p>
       </div></div></div></div></section>
   )
 }

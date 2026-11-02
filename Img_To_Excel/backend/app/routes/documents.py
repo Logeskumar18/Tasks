@@ -1,8 +1,7 @@
-from io import BytesIO, StringIO
+from io import BytesIO
 from pathlib import Path
 from uuid import uuid4
 
-import pandas as pd
 import pymupdf
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from fastapi.responses import StreamingResponse
@@ -15,7 +14,7 @@ from app.models.document import Document
 from app.models.extracted_table import ExtractedTable
 from app.schemas.document import DocumentResponse
 from app.schemas.table import ExtractedTableResponse, TableDataUpdate
-from app.services.ocr_service import extract_tables
+from app.services.ocr_service import extract_tables, tables_to_csv, tables_to_xlsx
 from app.models.user import User
 from app.utils.dependencies import get_current_user
 
@@ -378,15 +377,7 @@ def export_document_tables(
 
     safe_name = Path(document.filename).stem or "document"
     if format == "csv":
-        output = StringIO()
-        frames = [pd.DataFrame(table.data) for table in tables]
-        pd.concat(frames, ignore_index=True).to_csv(
-            output,
-            index=False,
-            header=False,
-            encoding="utf-8-sig",
-        )
-        csv_bytes = BytesIO(output.getvalue().encode("utf-8-sig"))
+        csv_bytes = tables_to_csv(table.data for table in tables)
         return StreamingResponse(
             csv_bytes,
             media_type="text/csv",
@@ -395,16 +386,7 @@ def export_document_tables(
             },
         )
 
-    output = BytesIO()
-    with pd.ExcelWriter(output, engine="openpyxl") as writer:
-        for table in tables:
-            pd.DataFrame(table.data).to_excel(
-                writer,
-                sheet_name=f"Table {table.table_number}"[:31],
-                index=False,
-                header=False,
-            )
-    output.seek(0)
+    output = tables_to_xlsx(table.data for table in tables)
     return StreamingResponse(
         output,
         media_type=(

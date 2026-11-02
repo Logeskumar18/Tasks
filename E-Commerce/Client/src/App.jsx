@@ -30,7 +30,7 @@ function App() {
     const [orders, setOrders] = useState([])
 
     const [currentUser, setCurrentUser] = useState(() =>
-        JSON.parse(localStorage.getItem('shopEaseUser') || 'null')
+        JSON.parse(localStorage.getItem('IPlantUser') || 'null')
     )
 
     const isAuthenticated = Boolean(currentUser)
@@ -82,8 +82,8 @@ function App() {
 
     // Logout user
     const logout = () => {
-        localStorage.removeItem('shopEaseUser')
-        localStorage.removeItem('shopEaseToken')
+        localStorage.removeItem('IPlantUser')
+        localStorage.removeItem('IPlantToken')
 
         setCurrentUser(null)
         setCart([])
@@ -250,7 +250,7 @@ function App() {
                     </Routes>
                 </main>
 
-                <Footer />
+                <ConditionalFooter />
 
             </div>
         </BrowserRouter>
@@ -263,6 +263,14 @@ function ConditionalNavbar(props) {
     if (location.pathname.startsWith('/admin')) return null
 
     return <Navbar {...props} />
+}
+
+function ConditionalFooter() {
+    const location = useLocation()
+
+    if (location.pathname.startsWith('/admin')) return null
+
+    return <Footer />
 }
 
 // Login Prompt Component

@@ -1,5 +1,6 @@
 
-import { Link, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 function Navbar({
   cartCount = 0,
@@ -7,6 +8,15 @@ function Navbar({
   isAdmin = false,
   onLogout,
 }) {
+  const navigate = useNavigate()
+  const [query, setQuery] = useState('')
+
+  const handleSearch = (event) => {
+    event.preventDefault()
+    const search = query.trim()
+    navigate(search ? `/products?search=${encodeURIComponent(search)}` : '/products')
+  }
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm py-3">
       <div className="container">
@@ -36,6 +46,26 @@ function Navbar({
         {/* Navigation Links */}
         <div className="collapse navbar-collapse" id="siteNav">
           <div className="navbar-nav ms-auto align-items-md-center gap-md-2 pt-3 pt-md-0">
+
+            <form className="d-flex my-2 my-md-0" onSubmit={handleSearch} role="search">
+              <label className="visually-hidden" htmlFor="navbar-product-search">
+                Search products
+              </label>
+              <div className="input-group input-group-sm">
+                <input
+                  id="navbar-product-search"
+                  className="form-control bg-black border-secondary text-white"
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search products"
+                  aria-label="Search products"
+                />
+                <button className="btn btn-outline-light" type="submit" aria-label="Submit product search">
+                  <i className="bi bi-search" aria-hidden="true" />
+                </button>
+              </div>
+            </form>
 
             <NavLink
               className={({ isActive }) =>

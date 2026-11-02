@@ -7,16 +7,13 @@ function AdminNavbar({ user, onLogout }) {
           <div>
             <p className="text-secondary fw-semibold text-uppercase small mb-1">
               <i className="bi bi-stars me-2"></i>
-              ShopEase / Admin
+              IPlant / Admin
             </p>
             <h5 className="fw-bold text-white mb-0">Welcome back, {user?.name || 'Admin'}</h5>
           </div>
         </div>
         <div className="d-none d-md-flex align-items-center gap-2 ms-auto me-4">
-          <span className="badge rounded-pill bg-black border border-secondary text-secondary px-3 py-2">
-            <i className="bi bi-circle-fill text-success me-2"></i>
-            System online
-          </span>
+         
           <span className="text-secondary small">Control Center</span>
         </div>
         <div className="d-flex align-items-center gap-3">

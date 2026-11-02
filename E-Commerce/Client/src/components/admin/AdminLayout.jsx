@@ -2,6 +2,7 @@
 import { Navigate, Outlet } from 'react-router-dom'
 
 import AdminNavbar from './AdminNavbar.jsx'
+import AdminSidebar from './AdminSidebar.jsx'
 
 function AdminLayout({ user, onLogout }) {
 
@@ -12,16 +13,18 @@ function AdminLayout({ user, onLogout }) {
 
     return (
         <div className="min-vh-100 bg-black text-light">
-
-            {/* Admin Navbar */}
             <AdminNavbar
                 user={user}
                 onLogout={onLogout}
             />
 
-            <main className="container-fluid px-3 px-lg-5 py-4">
-                <Outlet />
-            </main>
+            <div className="row g-0 align-items-start">
+                <AdminSidebar />
+
+                <main className="col-12 col-lg-10 px-3 px-lg-5 py-4">
+                    <Outlet />
+                </main>
+            </div>
 
         </div>
     )

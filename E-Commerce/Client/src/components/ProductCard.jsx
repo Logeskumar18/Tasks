@@ -4,7 +4,15 @@ function ProductCard({ product, onAdd }) {
   return (
     <article className="card h-100 bg-dark border-secondary text-light">
       <Link to={`/products/${product.id}`} className="ratio ratio-4x3 bg-black">
-        <img src={product.image_url} alt={product.name} className="card-img-top object-fit-cover" />
+        <img
+          src={product.image_url || '/product-placeholder.svg'}
+          alt={product.name}
+          className="card-img-top object-fit-cover"
+          onError={(event) => {
+            event.currentTarget.onerror = null
+            event.currentTarget.src = '/product-placeholder.svg'
+          }}
+        />
       </Link>
       <div className="card-body d-flex flex-column">
         <div>
